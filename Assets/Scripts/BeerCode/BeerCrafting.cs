@@ -29,7 +29,7 @@ public class BeerCrafting : MonoBehaviour
                     {
                         if (slot.typeOfIngredient == _currentIngredient.type)
                         {
-                            slot.gameObject.SetActive(true);
+                            slot.Parent.SetActive(true);
                             slot.ingredient = _currentIngredient;
                             slot.GetComponent<Image>().sprite = _currentIngredient.ingredientImage;
 
@@ -58,15 +58,16 @@ public class BeerCrafting : MonoBehaviour
     public void OnClickSlot(Slot slot)
     {
         slot.ingredient = null;
-        slot.gameObject.SetActive(false);
+        slot.Parent.SetActive(false);
         if (slots[0].ingredient == null) Button.gameObject.SetActive(false);
     }
 
     public void OnClickBeer(InventarySlot slot)
     {
-        slot.BeerImage = null;
-        slot.gameObject.SetActive(false);
+        slot.Parent.SetActive(false);
+        slot.GetComponent<Image>().sprite = null;
         player.Beer = beer;
+        beer = null;
     }
 
     public void OnMouseDown(Ingredient ingredient)
@@ -85,12 +86,12 @@ public class BeerCrafting : MonoBehaviour
         {
             beer = Instantiate(Beer);
             beer.SetProperty(slots[0].ingredient, slots[1].ingredient, slots[2].ingredient);
-            boiler.gameObject.SetActive(true);
+            boiler.Parent.SetActive(true);
             boiler.GetComponent<Image>().sprite = boiler.BeerImage.CurrentImage;
             foreach (var slot in slots)
             {
                 slot.ingredient = null;
-                slot.gameObject.SetActive(false);
+                slot.Parent.SetActive(false);
             }
             Button.gameObject.SetActive(false);
         }
