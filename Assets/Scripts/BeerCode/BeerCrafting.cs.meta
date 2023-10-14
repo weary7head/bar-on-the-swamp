@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6f81b7cd971eace4991e6654b3b3c666
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - customCursor: {instanceID: 0}
+  - boiler: {instanceID: 0}
+  - Button: {instanceID: 0}
+  - Beer: {fileID: 3667517646204729282, guid: 1b88bf4f831809b46b70d302d957f3b5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
