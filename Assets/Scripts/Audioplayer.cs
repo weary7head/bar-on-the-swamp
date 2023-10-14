@@ -9,9 +9,11 @@ public class Audioplayer : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private int currentAudioIndex = -1;
+    private int layer;
 
     private void Start()
     {
+        layer = LayerMask.NameToLayer("Audioplayer");
         PlayNextAudio();
     }
 
@@ -20,7 +22,13 @@ public class Audioplayer : MonoBehaviour
         if (!audioSource.isPlaying) PlayNextAudio();
         if (!Input.GetMouseButtonDown(0)) return;
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out var hit, layerMask)) PlayNextAudio();
+        if (Physics.Raycast(ray, out var hit))
+        {
+            if (hit.transform.gameObject.layer == layer)
+            {
+                PlayNextAudio();
+            }
+        }
     }
 
     private void PlayNextAudio()
