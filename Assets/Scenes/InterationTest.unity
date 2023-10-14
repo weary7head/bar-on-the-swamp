@@ -1767,14 +1767,6 @@ PrefabInstance:
       propertyPath: movementPoints.Array.data[2]
       value: 
       objectReference: {fileID: 435928154}
-    - target: {fileID: 1732062068, guid: 25ac7781b446ce340833d8907ab3b1e1, type: 3}
-      propertyPath: minimumDistanceToChangeTargetPoint
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1732062069, guid: 25ac7781b446ce340833d8907ab3b1e1, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 3844397495401018831, guid: 25ac7781b446ce340833d8907ab3b1e1, type: 3}
       propertyPath: m_RootOrder
       value: 10
