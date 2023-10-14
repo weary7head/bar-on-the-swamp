@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class Beer : MonoBehaviour
 {
-    public string Base;
-    [CanBeNull] public string Addon;
-    [CanBeNull] public string Specific;
+    public Ingredient Base;
+    [CanBeNull] public Ingredient Addon;
+    [CanBeNull] public Ingredient Specific;
     public Raiting raiting;
     public ScriptableBeerImage BeerImage;
 
@@ -36,20 +36,20 @@ public class Beer : MonoBehaviour
     public void SetProperty(Ingredient baseIngredient, [CanBeNull] Ingredient addonIngredient,
         [CanBeNull] Ingredient specificIngredient)
     {
-        Base = baseIngredient.ingredientName;
+        Base = baseIngredient;
         BeerImage.SetImage(baseIngredient.baseIngredient);
         if (addonIngredient != null)
         {
-            Addon = addonIngredient.ingredientName;
-            Debug.Log(_goodPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste));
+            Addon = addonIngredient;
             if (_goodPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste)) raiting = Raiting.Добре;
             else if (_normPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste)) raiting = Raiting.Середнє;
             else raiting = Raiting.Погане;
         }
-        if (specificIngredient != null) Specific = specificIngredient.ingredientName;
-        string message = $"Ваше пиво {raiting}! Воно складалось з {Base}";
-        if (addonIngredient != null) message += $", {Addon}";
-        if (specificIngredient != null) message += $" та спеціального інградієнту {Specific}";
+
+        if (specificIngredient != null) Specific = specificIngredient;
+        string message = $"Ваше пиво {raiting}! Воно складалось з {Base.ingredientName}";
+        if (addonIngredient != null) message += $", {Addon.ingredientName}";
+        if (specificIngredient != null) message += $" та спеціального інградієнту {Specific.ingredientName}";
         Debug.Log(message);
     }
 }
