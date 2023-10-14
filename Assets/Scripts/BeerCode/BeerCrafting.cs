@@ -1,10 +1,11 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BeerCrafting : MonoBehaviour
 {
+    [SerializeField] private GameObject containedObject;
+    [SerializeField] private MouseInteractor mouseInteractor;
+    
     private Ingredient _currentIngredient;
     public Image customCursor;
     public InventarySlot boiler;
@@ -68,6 +69,8 @@ public class BeerCrafting : MonoBehaviour
         slot.GetComponent<Image>().sprite = null;
         player.Beer = beer;
         beer = null;
+        mouseInteractor.IsInteractionOn = true;
+        containedObject.SetActive(false);
     }
 
     public void OnMouseDown(Ingredient ingredient)

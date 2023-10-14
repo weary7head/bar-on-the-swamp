@@ -3,27 +3,34 @@ using UnityEngine;
 public class MouseInteractor : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private LayerMask interactionMasks;
     [SerializeField] private Player player;
+    [SerializeField] private GameObject beerCraftingGameObject;
+    [SerializeField] private BeerCrafting beerCrafting;
+    [SerializeField] private float minimumSqrtDistanceToInteract = 62f;
 
-    private readonly float minimumSqrtDistanceToInteract = 1.2f;
+    public bool IsInteractionOn { get; set; } = true;
+    
+   
     private int visitorLayerMask;
+    private int potLayerMask;
     
     private void Start()
     {
         visitorLayerMask = LayerMask.NameToLayer("Visitor");
+        potLayerMask = LayerMask.NameToLayer("Pot");
     }
 
     private void Update()
     {
-        if (!Input.GetMouseButton(0)) return;
+        if (!Input.GetMouseButtonDown(0) || !IsInteractionOn) return;
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out var hit, interactionMasks))
+        if (Physics.Raycast(ray, out var hit))
         {
-            if (hit.transform.gameObject.layer == visitorLayerMask)
+            float distance = (hit.transform.position - player.transform.position).sqrMagnitude;
+            Debug.Log($"{distance} {minimumSqrtDistanceToInteract} {distance < minimumSqrtDistanceToInteract}");
+            if (distance <= minimumSqrtDistanceToInteract)
             {
-                float distance = (hit.transform.position - player.transform.position).sqrMagnitude;
-                if (distance < minimumSqrtDistanceToInteract)
+                if (hit.transform.gameObject.layer == visitorLayerMask)
                 {
                     if (hit.transform.TryGetComponent(out Visitor visitor))
                     {
@@ -39,6 +46,12 @@ public class MouseInteractor : MonoBehaviour
                             
                         }
                     }
+                }
+                
+                if (hit.transform.gameObject.layer == potLayerMask)
+                {
+                    beerCraftingGameObject.SetActive(true);
+                    IsInteractionOn = false;
                 }
             }
         }
