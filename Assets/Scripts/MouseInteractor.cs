@@ -6,7 +6,7 @@ public class MouseInteractor : MonoBehaviour
     [SerializeField] private LayerMask interactionMasks;
     [SerializeField] private Player player;
 
-    private readonly float minimumSqrtDistanceToInteract = 1.2f;
+    private readonly float minimumSqrtDistanceToInteract = 1.7f;
     private int visitorLayerMask;
     
     private void Start()
@@ -23,10 +23,11 @@ public class MouseInteractor : MonoBehaviour
             if (hit.transform.gameObject.layer == visitorLayerMask)
             {
                 float distance = (hit.transform.position - player.transform.position).sqrMagnitude;
-                if (distance < minimumSqrtDistanceToInteract)
+                if (distance <= minimumSqrtDistanceToInteract)
                 {
                     if (hit.transform.TryGetComponent(out Visitor visitor))
                     {
+                        if (visitor.Moving) return;
                         visitor.TriggerDialogue();
                     }
                 }

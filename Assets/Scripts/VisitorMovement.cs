@@ -1,3 +1,4 @@
+using System;using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,8 +9,12 @@ public class VisitorMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private List<Transform> movementPoints;
     [SerializeField] private float minimumDistanceToChangeTargetPoint = 0.01f;
+    [SerializeField] private Animator animator;
 
+    public bool Moving => navMeshAgent.hasPath;
+    
     private int currentTargetIndex = -1;
+    private static readonly int MoveValue = Animator.StringToHash("MoveValue");
 
     private void Start()
     {
@@ -32,6 +37,39 @@ public class VisitorMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(movementPoints[currentTargetIndex].position.x,
                 navMeshAgentTransform.position.y, movementPoints[currentTargetIndex].position.z);
             navMeshAgent.SetDestination(targetPosition);
+            ChangeAnimation(AnimationType.Walking);
+            if (currentTargetIndex == movementPoints.Count - 1)
+            {
+                StartCoroutine(ResetPath());
+            }
         }
     }
+
+    private IEnumerator ResetPath()
+    {
+        yield return new WaitUntil(() => navMeshAgent.remainingDistance == 0);
+        ChangeAnimation(AnimationType.Idle);
+        navMeshAgent.ResetPath();
+    }
+
+    private void ChangeAnimation(AnimationType animationType)
+    {
+        switch (animationType)
+        {
+            case AnimationType.Idle:
+                animator.SetFloat(MoveValue, 0);
+                break;
+            case AnimationType.Walking:
+                animator.SetFloat(MoveValue, 1);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
+        }
+    }
+}
+
+public enum AnimationType
+{
+    Idle,
+    Walking
 }
