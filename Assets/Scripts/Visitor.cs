@@ -2,13 +2,39 @@ using UnityEngine;
 
 public class Visitor : MonoBehaviour
 {
-    [SerializeField] private DialogueTrigger dialogueTrigger;
+    [SerializeField] private DialogueTrigger orderDialogueTrigger;
+    [SerializeField] private DialogueTrigger rejectDialogueTrigger;
+    [SerializeField] private DialogueTrigger approvalDialogueTrigger;
     [SerializeField] private VisitorMovement visitorMovement;
-
+    [SerializeField] private Ingredient.BaseType targetBeerType;
+    
+    private DialogueType currentDialogueType = DialogueType.Order;
     public bool Moving => visitorMovement.Moving;
 
-    public void TriggerDialogue()
+    public bool TryGetBeer(Beer beer)
     {
-        dialogueTrigger.TriggerDialogue();
+        if (beer.raiting == Beer.Raiting.Погане || beer.Base.baseIngredient != targetBeerType)
+        {
+            rejectDialogueTrigger.TriggerDialogue();
+            currentDialogueType = DialogueType.Order;
+            return false;
+        }
+
+        currentDialogueType = DialogueType.Approval;
+        approvalDialogueTrigger.TriggerDialogue();
+        return true;
     }
+
+    public Ingredient.BaseType GiveOrder()
+    {
+        orderDialogueTrigger.TriggerDialogue();
+        return targetBeerType;
+    }
+}
+
+public enum DialogueType
+{
+    Order,
+    Reject,
+    Approval
 }

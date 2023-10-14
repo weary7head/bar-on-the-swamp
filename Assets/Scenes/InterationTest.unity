@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 598991813}
   - component: {fileID: 598991812}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MouseInteractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1871,7 +1871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTrigger: {fileID: 1492842232}
-  visitorMovement: {fileID: 1492842234}
 --- !u!114 &1492842234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1891,7 +1890,6 @@ MonoBehaviour:
   - {fileID: 1176369229}
   - {fileID: 435928154}
   minimumDistanceToChangeTargetPoint: 0.01
-  animator: {fileID: 0}
 --- !u!195 &1492842235
 NavMeshAgent:
   m_ObjectHideFlags: 0
