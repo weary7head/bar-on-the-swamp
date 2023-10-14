@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da37d92e9ba9eeb4297f5cd0f1afe8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Base: 
-  Addon: 
-  Specific: 
+  Base: {fileID: 0}
+  Addon: {fileID: 0}
+  Specific: {fileID: 0}
   raiting: 0
   BeerImage: {fileID: 11400000, guid: 98f3bd467a520d24c9c7e107e52393da, type: 2}
 --- !u!222 &8512301996648899037
