@@ -42,9 +42,11 @@ public class Beer : MonoBehaviour
         {
             Addon = addonIngredient;
             if (_goodPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste)) raiting = Raiting.Добре;
-            else if (_normPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste)) raiting = Raiting.Середнє;
+            else if (_normPair[baseIngredient.baseIngredient].Contains(addonIngredient.taste))
+                raiting = Raiting.Середнє;
             else raiting = Raiting.Погане;
         }
+        else raiting = Raiting.Середнє;
 
         if (specificIngredient != null) Specific = specificIngredient;
         string message = $"Ваше пиво {raiting}! Воно складалось з {Base.ingredientName}";

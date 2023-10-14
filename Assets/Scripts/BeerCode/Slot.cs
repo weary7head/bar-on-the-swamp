@@ -7,4 +7,5 @@ public class Slot : MonoBehaviour
 {
     public Ingredient ingredient;
     public Ingredient.Type typeOfIngredient;
+    public GameObject Parent;
 }
