@@ -41,7 +41,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -72,9 +72,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.5911438
-  m_TransitionOffset: 0
-  m_ExitTime: 0.007338922
+  m_TransitionDuration: 1.2813756
+  m_TransitionOffset: 0.05451691
+  m_ExitTime: 0.11141667
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -124,9 +124,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.5990771
-  m_TransitionOffset: 0
-  m_ExitTime: 0.0040189163
+  m_TransitionDuration: 2.545501
+  m_TransitionOffset: 0.16122143
+  m_ExitTime: 0.088468306
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

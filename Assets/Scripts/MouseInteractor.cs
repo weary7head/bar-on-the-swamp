@@ -27,7 +27,6 @@ public class MouseInteractor : MonoBehaviour
         if (Physics.Raycast(ray, out var hit))
         {
             float distance = (hit.transform.position - player.transform.position).sqrMagnitude;
-            Debug.Log($"{distance} {minimumSqrtDistanceToInteract} {distance < minimumSqrtDistanceToInteract}");
             if (distance <= minimumSqrtDistanceToInteract)
             {
                 if (hit.transform.gameObject.layer == visitorLayerMask)
@@ -35,20 +34,20 @@ public class MouseInteractor : MonoBehaviour
                     if (hit.transform.TryGetComponent(out Visitor visitor))
                     {
                         if (visitor.Moving) return;
-                        if (player.Beer == null)
+                        if (player.CurrentOrderBeerType == Ingredient.BaseType.None)
                         {
                             player.GetOrder(visitor.GiveOrder());
                             return;
                         }
 
-                        if (visitor.TryGetBeer(player.Beer))
+                        if (player.Beer != null && visitor.TryGetBeer(player.Beer))
                         {
-                            
+                            player.GetOrder(Ingredient.BaseType.None);
                         }
                     }
                 }
                 
-                if (hit.transform.gameObject.layer == potLayerMask && player.CurrentOrderBeerType == Ingredient.BaseType.None)
+                if (hit.transform.gameObject.layer == potLayerMask && player.CurrentOrderBeerType != Ingredient.BaseType.None)
                 {
                     beerCraftingGameObject.SetActive(true);
                     IsInteractionOn = false;

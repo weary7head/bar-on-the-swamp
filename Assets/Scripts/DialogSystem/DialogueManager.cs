@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,11 +10,13 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField] private TMP_Text dialogueText;
 	[SerializeField] private Animator animator;
 	[SerializeField] private MouseInteractor mouseInteractor;
-
-	private Queue<string> sentences = new();
 	
-	public void StartDialogue (Dialogue dialogue)
+	private Queue<string> sentences = new();
+	private Action onDialogueEnd;
+	
+	public void StartDialogue (Dialogue dialogue, Action dialogueEnded)
 	{
+        onDialogueEnd = null;
 		mouseInteractor.IsInteractionOn = false;
 		animator.SetBool("IsOpen", true);
 		nameText.text = dialogue.Name;
@@ -22,10 +25,11 @@ public class DialogueManager : MonoBehaviour
 		{
 			sentences.Enqueue(sentence);
 		}
+        onDialogueEnd = dialogueEnded;
 		DisplayNextSentence();
 	}
 
-	public void DisplayNextSentence ()
+	public void DisplayNextSentence()
 	{
 		if (sentences.Count == 0)
 		{
@@ -49,6 +53,7 @@ public class DialogueManager : MonoBehaviour
 
 	private void EndDialogue()
 	{
+		onDialogueEnd?.Invoke();
 		mouseInteractor.IsInteractionOn = true;
 		animator.SetBool("IsOpen", false);
 	}

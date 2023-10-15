@@ -15,19 +15,19 @@ public class Visitor : MonoBehaviour
     {
         if (beer.raiting == Beer.Raiting.Погане || beer.Base.baseIngredient != targetBeerType)
         {
-            rejectDialogueTrigger.TriggerDialogue();
+            rejectDialogueTrigger.TriggerDialogue(null);
             currentDialogueType = DialogueType.Order;
             return false;
         }
 
         currentDialogueType = DialogueType.Approval;
-        approvalDialogueTrigger.TriggerDialogue();
+        approvalDialogueTrigger.TriggerDialogue(visitorMovement.GoExit);
         return true;
     }
 
     public Ingredient.BaseType GiveOrder()
     {
-        orderDialogueTrigger.TriggerDialogue();
+        orderDialogueTrigger.TriggerDialogue(null);
         return targetBeerType;
     }
 }

@@ -10,12 +10,19 @@ public class VisitorMovement : MonoBehaviour
     [SerializeField] private List<Transform> movementPoints;
     [SerializeField] private float minimumDistanceToChangeTargetPoint = 0.01f;
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform exitPoint;
 
     public bool Moving => navMeshAgent.hasPath;
     
     private int currentTargetIndex = -1;
     private static readonly int MoveValue = Animator.StringToHash("MoveValue");
 
+    public void GoExit()
+    {
+        ChangeAnimation(AnimationType.Walking);
+        navMeshAgent.SetDestination(exitPoint.position);
+    }
+    
     private void Start()
     {
        SetNextDestination();
