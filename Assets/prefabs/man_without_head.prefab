@@ -2839,6 +2839,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 3661712957142423048}
   movementPoints:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   minimumDistanceToChangeTargetPoint: 1.7
   animator: {fileID: 2947321701115232302}
   exitPoint: {fileID: 0}
