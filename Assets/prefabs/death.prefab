@@ -608,7 +608,7 @@ MonoBehaviour:
   - {fileID: 0}
   minimumDistanceToChangeTargetPoint: 1.7
   animator: {fileID: 1901852772}
-  exitPoint: {fileID: 299806548816512029}
+  exitPoint: {fileID: 0}
 --- !u!114 &1901852777
 MonoBehaviour:
   m_ObjectHideFlags: 0
