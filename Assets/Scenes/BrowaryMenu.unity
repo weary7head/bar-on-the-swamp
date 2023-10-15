@@ -546,7 +546,7 @@ MonoBehaviour:
           m_MethodName: OnMouseDown
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 848ffd1097f13ce428eab175ff4bc773, type: 2}
+            m_ObjectArgument: {fileID: 11400000, guid: 1a9044537a33f5b4184895f6037937cd, type: 2}
             m_ObjectArgumentAssemblyTypeName: Ingredient, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -4547,6 +4547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f81b7cd971eace4991e6654b3b3c666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  containedObject: {fileID: 0}
+  mouseInteractor: {fileID: 0}
   customCursor: {fileID: 755136652}
   boiler: {fileID: 52374196}
   distance: 500

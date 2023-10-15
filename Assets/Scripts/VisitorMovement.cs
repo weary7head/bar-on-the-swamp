@@ -13,7 +13,7 @@ public class VisitorMovement : MonoBehaviour
     [SerializeField] private Transform exitPoint;
 
     public bool Moving => navMeshAgent.hasPath;
-    
+    public event Action Stopped; 
     private int currentTargetIndex = -1;
     private static readonly int MoveValue = Animator.StringToHash("MoveValue");
 
@@ -57,6 +57,7 @@ public class VisitorMovement : MonoBehaviour
         yield return new WaitUntil(() => navMeshAgent.remainingDistance == 0);
         ChangeAnimation(AnimationType.Idle);
         navMeshAgent.ResetPath();
+        Stopped?.Invoke();
     }
 
     private void ChangeAnimation(AnimationType animationType)
