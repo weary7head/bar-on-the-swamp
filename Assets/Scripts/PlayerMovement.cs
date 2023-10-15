@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private MouseInteractor mouseInteractor;
     
-    private static readonly int MoveValue = Animator.StringToHash("MoveValue");
+    private readonly int moveValue = Animator.StringToHash("MoveValue");
     private Coroutine coroutine;
     private int layer;
 
@@ -47,10 +47,10 @@ public class PlayerMovement : MonoBehaviour
         switch (animationType)
         {
             case AnimationType.Idle:
-                animator.SetFloat(MoveValue, 0);
+                animator.SetFloat(moveValue, 0);
                 break;
             case AnimationType.Walking:
-                animator.SetFloat(MoveValue, 1);
+                animator.SetFloat(moveValue, 1);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
