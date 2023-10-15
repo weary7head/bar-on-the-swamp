@@ -48,7 +48,7 @@ public class MouseInteractor : MonoBehaviour
                     }
                 }
                 
-                if (hit.transform.gameObject.layer == potLayerMask)
+                if (hit.transform.gameObject.layer == potLayerMask && player.CurrentOrderBeerType == Ingredient.BaseType.None)
                 {
                     beerCraftingGameObject.SetActive(true);
                     IsInteractionOn = false;

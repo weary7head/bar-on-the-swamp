@@ -8904,6 +8904,7 @@ MonoBehaviour:
   nameText: {fileID: 1538543680}
   dialogueText: {fileID: 1847477673}
   animator: {fileID: 1639566408}
+  mouseInteractor: {fileID: 997130143}
 --- !u!4 &1357197340
 Transform:
   m_ObjectHideFlags: 0
@@ -12509,10 +12510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1985854385}
   mainCamera: {fileID: 1034853278}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
   animator: {fileID: 1985854387}
+  mouseInteractor: {fileID: 997130143}
 --- !u!195 &1985854385
 NavMeshAgent:
   m_ObjectHideFlags: 0

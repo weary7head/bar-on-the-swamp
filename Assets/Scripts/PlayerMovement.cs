@@ -7,30 +7,32 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
+    [SerializeField] private MouseInteractor mouseInteractor;
     
     private static readonly int MoveValue = Animator.StringToHash("MoveValue");
     private Coroutine coroutine;
+    private int layer;
 
     private void Start()
     {
+        layer = LayerMask.NameToLayer("Ground");
         ChangeAnimation(AnimationType.Idle);
     }
 
     private void Update()
     {
-        if (!Input.GetMouseButton(0)) return;
+        if (!Input.GetMouseButtonDown(0) || !mouseInteractor.IsInteractionOn) return;
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit))
         {
-            if (coroutine != null)
+            if (hit.transform.gameObject.layer == layer)
             {
-                StopCoroutine(coroutine);
+                if (coroutine != null) StopCoroutine(coroutine);
+                ChangeAnimation(AnimationType.Walking);
+                navMeshAgent.SetDestination(hit.point);
+                coroutine = StartCoroutine(ResetPath());
             }
-            ChangeAnimation(AnimationType.Walking);
-            navMeshAgent.SetDestination(hit.point);
-            coroutine = StartCoroutine(ResetPath());
         }
     }
     
