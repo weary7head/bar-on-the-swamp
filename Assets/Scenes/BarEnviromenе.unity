@@ -13727,9 +13727,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: d51e0639d4ec74b45a7b25e59cc2935d, type: 3}
+  - {fileID: 8300000, guid: 16201c45ee296c8468fd2f7f7910afc4, type: 3}
+  - {fileID: 8300000, guid: d95b83eb505c6344a9080324b774c2a0, type: 3}
   - {fileID: 8300000, guid: b1fa608e037be76489692b0118ff42bc, type: 3}
   - {fileID: 8300000, guid: 9407b32c2de43ce42afa08d1e3f26119, type: 3}
-  - {fileID: 8300000, guid: 16201c45ee296c8468fd2f7f7910afc4, type: 3}
   audioSource: {fileID: 2033737673}
   mainCamera: {fileID: 1034853278}
   layerMask:
