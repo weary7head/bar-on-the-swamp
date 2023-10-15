@@ -8665,10 +8665,6 @@ PrefabInstance:
       propertyPath: movementPoints.Array.data[2]
       value: 
       objectReference: {fileID: 2025209156}
-    - target: {fileID: 2188357074392292778, guid: 25ac7781b446ce340833d8907ab3b1e1, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1034853278}
     - target: {fileID: 3844397495401018831, guid: 25ac7781b446ce340833d8907ab3b1e1, type: 3}
       propertyPath: m_RootOrder
       value: 3
