@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour 
 {
@@ -10,6 +11,7 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField] private TMP_Text dialogueText;
 	[SerializeField] private Animator animator;
 	[SerializeField] private MouseInteractor mouseInteractor;
+	[SerializeField] private GameObject visitorImage;
 	
 	private Queue<string> sentences = new();
 	private Action onDialogueEnd;
@@ -18,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 	{
         onDialogueEnd = null;
 		mouseInteractor.IsInteractionOn = false;
+		animator.gameObject.SetActive(true);
+		visitorImage.GetComponent<Image>().sprite = dialogue.Visitor.visitorSprite;
 		animator.SetBool("IsOpen", true);
 		nameText.text = dialogue.Name;
 		sentences.Clear();

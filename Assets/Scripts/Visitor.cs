@@ -10,6 +10,7 @@ public class Visitor : MonoBehaviour
     [SerializeField] private VisitorMovement visitorMovement;
     [SerializeField] private Ingredient.BaseType targetBeerType;
     [SerializeField] private AttentionImage interactionSign;
+    public Sprite visitorSprite;
     
     private DialogueType currentDialogueType = DialogueType.Order;
     public bool Moving => visitorMovement.Moving;
