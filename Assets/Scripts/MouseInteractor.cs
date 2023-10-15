@@ -43,6 +43,7 @@ public class MouseInteractor : MonoBehaviour
                         if (player.Beer != null && visitor.TryGetBeer(player.Beer))
                         {
                             player.GetOrder(Ingredient.BaseType.None);
+                            player.Beer = null;
                         }
                     }
                 }
