@@ -8,7 +8,7 @@ public class MenuButtons : MonoBehaviour
 {
    public void PlayGame()
    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("BarEnviromenå");
    }
 
    public void Exit()

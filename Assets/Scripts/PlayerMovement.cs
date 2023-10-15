@@ -56,4 +56,9 @@ public class PlayerMovement : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Enter");
+    }
 }
